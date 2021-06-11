@@ -44,6 +44,7 @@ public class AppController {
         if (user.getEmail() != "" && user.getName() != "" && userRepo.findByEmail(user.getEmail()) == null) {
             user.setRegistrationDate(date.toString());
             user.setLastLoginDate(date.toString());
+            user.setStatus("Offline");
             user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             userRepo.save(user);
             return "index";
@@ -98,9 +99,9 @@ public class AppController {
                         userRepo.changeStatusById(id, "Offline");
                     }
             }
-
-        } else {
             return "action";
+        } else {
+//            return "action";
         }
 
         String name;
