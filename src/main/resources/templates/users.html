@@ -8,13 +8,20 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/checkAll.js"></script>
 </head>
+
 <body>
+<nav class="navbar bg-secondary">
+    <h1 class="text-light ml-5">List of users service: users list</h1>
+    <!-- Links -->
+    <ul class="nav nav-bar border text-white rounded bg-dark">
+        <li><div>
+                <a th:href="@{/logout_tech}" class="nav-link">Logout</a>
+        </div></li>
+    </ul>
+</nav>
 <div class="container text-center">
     <div>
-        <form th:action="@{/logout_tech}">
             <p>Logged user: <b>[[${#request.userPrincipal.principal.name}]]</b></p>
-            <input type="submit" value="Sign Out"/>
-        </form>
     </div>
     <form th:action="@{/action}" th:object="${listUsers}" method="post">
         <div>
@@ -35,7 +42,7 @@
                 </tr>
                 <tr>
 
-                    <th><input type="checkbox" onClick="toggle(this)"/>Toggle All<br/></th>
+                    <th><input type="checkbox" onClick="toggle(this)"/>  Toggle All<br/></th>
                     <th>User ID</th>
                     <th>Name</th>
                     <th>Email</th>

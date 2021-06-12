@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="ISO-8859-1">
     <title>Welcome to List of users service</title>
-      <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -14,37 +17,24 @@
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
 </head>
+
 <body>
-<p>WORK</p>
+<div id="header"></div>
 
-<nav class="navbar navbar-expand-lg navbar-light d-flex">
-    <div class="container-fluid">
-
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="nav nav-bar m-auto">
-                <li class="nav-item">
-                    <a th:href="@{/users}" class="nav-link">List Of Users</a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="@{/registrtion}" class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a th:href="@{/login}" class="nav-link">Login</a>
-                </li>
-                <!--    <li class="nav-item">-->
-                <!--      <a href="#" class="nav-link disabled">Disabled</a>-->
-                <!--    </li>-->
-            </ul>
-        </div>
-    </div>
+<nav class="navbar bg-secondary">
+    <h1 class="text-light ml-5">List of users service</h1>
+    <!-- Links -->
+    <ul class="nav nav-bar border text-white rounded bg-dark">
+        <li class="nav-item">
+            <a th:href="@{/users}" class="nav-link">List Of Users</a>
+        </li>
+        <li class="nav-item">
+            <a th:href="@{/registration}" class="nav-link">Register</a>
+        </li>
+        <li class="nav-item">
+            <a th:href="@{/login}" class="nav-link">Login</a>
+        </li>
+    </ul>
 </nav>
-<!--<div class="container text-center">-->
-<!--  <h1>List of users service</h1>-->
-<!--  <h3><a th:href="@{/users}">List of Users</a></h3>-->
-<!--  <h3><a th:href="@{/registration}">Register</a></h3>-->
-<!--  <h3><a th:href="@{/login}">Login</a></h3>-->
-<!--</div>-->
-<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

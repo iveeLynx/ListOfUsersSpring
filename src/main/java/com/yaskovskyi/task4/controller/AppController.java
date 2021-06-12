@@ -22,12 +22,6 @@ public class AppController {
 
     @GetMapping("/index")
     public String viewHomePage() {
-//        String name;
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if (principal instanceof UserData) {
-//            name = ((UserData)principal).getUsername();
-//            userRepo.changeStatusByName(name, "Offline");
-//        }
         return "index";
     }
 
@@ -59,19 +53,23 @@ public class AppController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserData) {
             name = ((UserData) principal).getUsername();
+            if(userRepo.findByEmail(name).getStatus().equals("Blocked")){
+                return "redirect:/logout_blocked";
+            }
         } else {
             name = principal. toString();
         }
         java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-//        userRepo.findByEmail(((UserData) principal).getUsername());
         userRepo.updateLoginDate(name, date.toString());
         userRepo.changeStatusByName(name, "Online");
         List<User> listUsers = (List<User>) userRepo.findAll();
         model.addAttribute("listUsers", listUsers);
-
-
-
         return "users";
+    }
+
+    @GetMapping("/logout_blocked")
+    public String blockedUser(){
+        return "/logout_blocked";
     }
 
     @Transactional
@@ -88,16 +86,19 @@ public class AppController {
                         int id = Integer.parseInt(checked);
                         userRepo.deleteByIds(id);
                     }
+                    break;
                 case "Block users":
                     for(String checked: checkid){
                         int id = Integer.parseInt(checked);
                         userRepo.changeStatusById(id, "Blocked");
                     }
+                    break;
                 case "Unblock users":
                     for(String checked: checkid){
                         int id = Integer.parseInt(checked);
                         userRepo.changeStatusById(id, "Offline");
                     }
+                    break;
             }
             return "action";
         } else {
@@ -137,7 +138,6 @@ public class AppController {
             name = ((UserData)principal).getUsername();
             userRepo.changeStatusByName(name, "Offline");
         }
-        System.out.println("SSSSSSSSSSSSSSSSSS");
         return "redirect:/logout";
     }
 
