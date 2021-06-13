@@ -69,7 +69,7 @@ public class AppController {
 
     @GetMapping("/logout_blocked")
     public String blockedUser(){
-        return "/logout_blocked";
+        return "logout_blocked";
     }
 
     @Transactional
